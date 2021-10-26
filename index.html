@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="js/pixi.min.js"></script>
+    <script>
+		var app = new PIXI.Application(1280,700);
+        document.body.appendChild(app.view);
+        
+        var bg = new PIXI.Sprite.fromImage("res/IMG_20211025_105234.png");
+        bg.scale.x=2;
+        bg.scale.y=2;
+        app.stage.addChild(bg);
+        
+        var endtitle = new PIXI.Sprite.fromImage("res/20201221190715_vlplv.png");
+        endtitle.scale.x=0.5;
+        endtitle.scale.y=0.5;
+        endtitle.x=-60;
+        app.stage.addChild(endtitle);
+        
+        var title = new PIXI.Text("\n浙\n菜\n之\n旅\n");
+        title.style.fontFamily = "宋体";
+        title.style.fontSize = 35;
+        title.style.fontWeight = "bold";
+        title.x=100;
+        title.y=80;
+        app.stage.addChild(title);
+        
+        var p1 = new PIXI.Sprite.fromImage("res/duitang_1635056137708.png");
+        p1.x=1020;
+        p1.scale.x=0.4;
+        p1.scale.y=0.4;
+        app.stage.addChild(p1);
+        
+ 
+        var pnext = new PIXI.Sprite.fromImage("res/20201113133430_d733b.png");
+		pnext.scale.x=0.4;
+        pnext.scale.y=0.4;
+        pnext.x=980;
+        pnext.y=480;
+        pnext.anchor.set(0.5,0.5)
+        app.stage.addChild(pnext);
+        pnext.interactive = true;
+        pnext.on("click",next);
+        pnext.alpha=0.2;
+        var count=1;
+        var txt=new PIXI.Text("");
+        txt.style.fontFamily = "楷体";
+        txt.x=250;
+        txt.y=70;
+        app.stage.addChild(txt);  
+        var p21= new PIXI.Sprite.fromImage("res/duitang_1635142762383.png");
+        function next(){
+        	if(count<=4){
+        		pnext.alpha=1;
+        		if(count==1){
+        			txt.text+="\n细雨斜风作晓寒,\n\n淡烟疏柳媚晴滩。\n\n入淮清洛渐漫漫。\n\n";
+        			txt.text+="雪沫乳花浮午盏，\n\n蓼茸蒿笋试春盘。\n\n人间有味是清欢。\n";
+        			txt.text+="\n";
+        			
+        		}
+        		else if(count==2){
+        			txt.text+="清欢来自于对简朴生活的热爱。\n";
+        			txt.text+="\n";
+        			
+        		}
+        		else if(count==3){
+        			p21.scale.x=0.2;
+        			p21.scale.y=0.2;
+        			p21.x=800;
+        			p21.y=200;
+        			app.stage.addChild(p21);
+        			txt.text+="何为清欢？\n";
+        			txt.text+="\n";
+        		}
+        		else if(count==4){
+        			txt.text+="清欢乃是清淡的欢愉，\n\n是追求身心的放松，\n\n追求心灵的品味和满足。\n";
+        			txt.text+="\n";
+        		}
+        		count++;  
+        	}
+        	else if(count==5){
+        		pnext.alpha=0.2;
+        		var txtn = new PIXI.Text("下次再见！");
+        		txtn.style.fontFamily = "隶书";
+        		txtn.x=980;
+        		txtn.y=500;
+        		app.stage.addChild(txtn);  
+        		count++;
+        	}
+        	else if(count==6){
+        		 var tbg = new PIXI.Sprite.fromImage("res/IMG_20211025_191448.png");
+        		 tbg.scale.x=3;
+        		 tbg.scale.y=3;
+        		 tbg.alpha=0;
+        		 app.stage.addChild(tbg);
+        		 var etitle = new PIXI.Sprite.fromImage("res/20170826202215_fLTvd_edit_919207500679010.png");
+        		 etitle.y=200;
+        		 app.stage.addChild(etitle);
+        		 etitle.alpha=0;
+        		 app.ticker.add(animate);
+			function animate() {
+				
+			    if(etitle.alpha<=1){
+			    	etitle.alpha+=0.002;
+			    }
+			    
+			    if(tbg.alpha<=1){
+			    	tbg.alpha+=0.02;
+			    }
+			    
+			}
+        	}
+        	
+        }
+        app.ticker.add(animate);
+			function animate() {
+				if(p21.x!=1000){
+					p21.x+=1;
+				}
+				if(p21.y!=300){
+					p21.y+=1;
+				}
+			}
+         
+       
+    </script>
+</body>
+</html>
