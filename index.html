@@ -50,6 +50,11 @@
         pnext.alpha=0.2;
         var count=1;
         var txt=new PIXI.Text("");
+        var notice=new PIXI.Text("请点击这里");
+        notice.style.fontFamily = "隶书";
+        notice.x=980;
+		notice.y=500;
+		app.stage.addChild(notice); 
         txt.style.fontFamily = "楷体";
         txt.x=250;
         txt.y=70;
@@ -57,11 +62,13 @@
         var p21= new PIXI.Sprite.fromImage("res/duitang_1635142762383.png");
         function next(){
         	if(count<=4){
+        		
         		pnext.alpha=1;
         		if(count==1){
         			txt.text+="\n细雨斜风作晓寒,\n\n淡烟疏柳媚晴滩。\n\n入淮清洛渐漫漫。\n\n";
         			txt.text+="雪沫乳花浮午盏，\n\n蓼茸蒿笋试春盘。\n\n人间有味是清欢。\n";
         			txt.text+="\n";
+        			
         			
         		}
         		else if(count==2){
@@ -85,6 +92,7 @@
         		count++;  
         	}
         	else if(count==5){
+        		notice.text="";
         		pnext.alpha=0.2;
         		var txtn = new PIXI.Text("下次再见！");
         		txtn.style.fontFamily = "隶书";
